@@ -1,0 +1,1 @@
+#define MEMSIZE 32

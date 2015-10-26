@@ -1,6 +1,7 @@
 %option yylineno case-insensitive
 %{
 #include "parser.tab.h"
+#include "globals.h"
 %}
 
 %%
@@ -22,7 +23,16 @@
 "JMP"			{ return JMP; }
 "STP"			{ return STP; }
 \n			{ return EOL; }
-[0-9]{1,3}		{ yylval = atoi(yytext); return MEMADDRESS; }
+[0-9]{1,3}		{ 
+				yylval = atoi(yytext); 
+				if (yylval > MEMSIZE) {
+					yyerror("Memory out of bounds!");
+				}
+				else if (yylval < 0)
+					yyerror("Memory out of bounds!");
+				else
+					return MEMADDRESS; 
+			}
 .			{ printf("Mystery char: %c\n", *yytext); }
 "INP"			{ 
 				char input[300];

@@ -1,7 +1,7 @@
 %{
 #include <stdio.h>
+#include "globals.h"
 
-#define MEMSIZE 32
 
 int rega; 		/* Register A */
 int regb;		/* Register B */
@@ -92,8 +92,6 @@ main (int argc, char **argv)
 }
 
 yyerror(char *s) {
-	printf("%s: yylval=%i\n",  s, yylval);
-	printf("%s:", yytext);
-	printf("Line Number %i: \n",yylineno);
+	printf("%s Line:%i\n", s,yylineno);
 }
 

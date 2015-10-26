@@ -1,4 +1,4 @@
-a.out: tokens.l parser.y
+a.out: tokens.l parser.y globals.h
 	bison -d -t -v parser.y
 	flex tokens.l
 	gcc parser.tab.c lex.yy.c -lfl
