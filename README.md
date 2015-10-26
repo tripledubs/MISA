@@ -11,7 +11,7 @@ For Computer Org 2 - UCO
 $ make
 
 #### Using:
-./a.out [input file]
+$ ./a.out [input file]
 
 #### Starting from scratch:
 $ git clone https://github.com/tripledubs/MISA.git
