@@ -1,9 +1,11 @@
+%option yylineno case-insensitive
 %{
 #include "parser.tab.h"
 %}
 
 %%
-
+"//".*			{ /* Ignore Comments */ }
+[ \t]			{ /* Ignore whitespace */ }
 "LDA"			{ return LDA; }
 "LDB"			{ return LDB; }
 "ADD"			{ return ADD; }
@@ -19,14 +21,13 @@
 "JEQ"			{ return JEQ; }
 "JMP"			{ return JMP; }
 "STP"			{ return STP; }
+\n			{ return EOL; }
+[0-9]{1,3}		{ yylval = atoi(yytext); return MEMADDRESS; }
+.			{ printf("Mystery char: %c\n", *yytext); }
 "INP"			{ 
 				char input[300];
 				fscanf(yyin,"%s",input);
 				yylval = atoi(input);
 				return INP;
 			}
-\n			{ return EOL; }
-[0-9]{1,3}		{ yylval = atoi(yytext); return MEMADDRESS; }
-[ \t]			{ }
-.			{ printf("Mystery char: %c\n", *yytext); }
 %%

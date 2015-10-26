@@ -7,7 +7,10 @@ int pc;			/* Program Counter */
 int statusRegister;	/* Status Register */
 int memory[32];		/* So, so much memory */
 void printMemory();	/* Print Memory Contents */
-extern FILE* yyin; 	/* Not working exactly, yet, only reads from stdin */
+
+extern FILE* yyin; 	
+extern int yylineno;
+extern char* yytext;
 
 %}
 
@@ -52,7 +55,8 @@ nullary:
 ;
 
 unary: 
-   INP address { memory[$2] = $$; }
+   INP address address { memory[$2] = $3; } 	/* file input */
+ | INP address { memory[$2] = $$; }		/* stdin */ 
  | LDA address { rega = memory[$2]; }
  | LDB address { regb = memory[$2]; }
  | STR address { memory[$2] = regb; }
@@ -87,6 +91,8 @@ main (int argc, char **argv)
 }
 
 yyerror(char *s) {
-	printf(" %s: yylval=%i\n",  s, yylval);
+	printf("%s: yylval=%i\n",  s, yylval);
+	printf("%s:", yytext);
+	printf("Line Number %i: \n",yylineno);
 }
 
