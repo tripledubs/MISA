@@ -4,4 +4,4 @@ LDA 20		// Load Register A from Mem[20]
 LDB 21		// Load Register B from Mem[21]
 ADD		// Register B will contain SUM
 STR 22		// Memory[22] will contain SUM
-
+// Blank line to show internals
