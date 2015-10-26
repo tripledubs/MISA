@@ -14,13 +14,7 @@ $ make
 $ ./a.out [input file]
 
 #### Starting from scratch:
-$ git clone https://github.com/tripledubs/MISA.git
-
-
-$ cd MISA
-
-
-$ make
-
-
+$ git clone https://github.com/tripledubs/MISA.git  
+$ cd MISA  
+$ make  
 $ ./a.out input (reads the file named "input")
