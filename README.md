@@ -6,8 +6,7 @@ Pamela Smallwood, Mohamed Lotfy, Mark Sanders. “Introducing the CPU and assemb
 
 For Computer Org 2
 
-/* Copyright (C) Dwayne Page - All Rights Reserved
- * Unauthorized copying of this file, via any medium is strictly prohibited
- * Proprietary and confidential
- * Written by Dwayne Page
- */
+Copyright (C) Dwayne Page - All Rights Reserved.
+Unauthorized copying of this file, via any medium is strictly prohibited.
+Proprietary and confidential.
+Written by Dwayne Page.
