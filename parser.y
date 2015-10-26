@@ -1,17 +1,18 @@
 %{
 #include <stdio.h>
 
+#define MEMSIZE 32
+
 int rega; 		/* Register A */
 int regb;		/* Register B */
 int pc;			/* Program Counter */ 
 int statusRegister;	/* Status Register */
-int memory[32];		/* So, so much memory */
+int memory[MEMSIZE];	/* So, so much memory */
 void printMemory();	/* Print Memory Contents */
 
 extern FILE* yyin; 	
 extern int yylineno;
 extern char* yytext;
-
 %}
 
 %token MEMADDRESS
@@ -61,10 +62,10 @@ unary:
  | LDB address { regb = memory[$2]; }
  | STR address { memory[$2] = regb; }
  | PNT address { printf("%i\n",memory[$2]); }
- | JLT address { }
- | JGT address { }
- | JEQ address { }
- | JMP address { }
+ | JLT address { /* Not implemented yet */ }
+ | JGT address { /* Not implemented yet */ }
+ | JEQ address  { /* Not implemented yet */ }
+ | JMP address  { /* Not implemented yet */ }
 ;
 
 address: MEMADDRESS
@@ -73,7 +74,7 @@ address: MEMADDRESS
 %% 
 void printMemory() {
 	int i;
-	for (i=0; i < 32; i++) {
+	for (i=0; i < MEMSIZE; i++) {
 		printf("%i:%i\n",i,memory[i]);
 	}
 }
