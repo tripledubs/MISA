@@ -1,2 +1,7 @@
-INP 20
-300
+INP 20 300 	// Load the address 20 with value 300
+INP 21 500 	// Load the address 21 with value 500
+LDA 20		// Load Register A from Mem[20] 		
+LDB 21		// Load Register B from Mem[21]
+ADD		// Register B will contain SUM
+STR 22		// Memory[22] will contain SUM
+
